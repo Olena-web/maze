@@ -43,10 +43,10 @@ var SearchAlgorithms = (function () {
     
     function getPossibleStates(p) {
         return [
-            { x: p.x + 1, y: p.y }, 
-            { x: p.x, y: p.y + 1 },
-            { x: p.x - 1, y: p.y },
-            { x: p.x, y: p.y - 1 }
+            { x: p.x + 1, y: p.y, val: 'right' }, 
+            { x: p.x, y: p.y + 1, val: 'down' },
+            { x: p.x - 1, y: p.y, val: 'left' },
+            { x: p.x, y: p.y - 1, val: 'top' }
         ];
     }
     
@@ -133,4 +133,42 @@ var SearchAlgorithms = (function () {
  var dfsNodes = SearchAlgorithms.dfs(map, start, end);
  // for BFS
  var bfsNodes = SearchAlgorithms.dfs(map, start, end);
- console.log(bfsNodes);
+//  console.log(bfsNodes);
+console.log(bfsNodes[9]);
+console.log(bfsNodes.length);
+
+
+
+function filter(array, key, value){
+    var i, j, hash = [], item;
+
+    for(i =  0, j = array.length; i<j; i++){
+        item = array[i];
+        if(typeof item[key] !== "undefined" && item[key] === value){
+            hash.push(item);
+        }
+    }
+
+    return hash;
+   
+};
+const truePath = (filter (bfsNodes, 'inPath', true));
+// console.log (truePath);
+
+
+function propertyValue(array, key) {
+    const arr = [];
+    let index = -1;
+    let item;
+
+    while (++index < array.length) {
+    item = array[index];
+
+      if (item.hasOwnProperty(key)) {
+       arr[arr.length] = item[key];
+      }
+    }
+
+    return arr;
+}
+console.log(propertyValue(truePath, 'val'));
