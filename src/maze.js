@@ -71,4 +71,3 @@ console.log(a);
 console.log(b);
 console.log(getCoordinates(maze[0], "0")); //[ 3, 4 ]
 console.log(getCoordinates(leftEdge, "+")); //[ 3, 0 ]
-
